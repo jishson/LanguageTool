@@ -1,1 +1,50 @@
+<!DOCTYPE html>
+<head>
 
+<style>
+.sentenceOfDay {
+    height:400;
+    width:300;
+    position:relative;
+    text-align:center;
+    color:black;
+    border:5px dotted orange;
+    padding:2px;
+    font-family:cambria;
+    text-decoration:none;
+    font-size:67px;
+    font-weight:bold;
+        }
+        			
+    </style>
+
+    <title>
+        Language Tool
+    </title>
+    
+</head>
+
+<body>
+
+    <button onclick="elementCounter()">
+        Use me to count elements :)
+    </button>
+    <p id="elementCounterDisplay"></p>
+    <p id="displayLoop"></p>
+<br>
+<div class="sentenceOfDay">
+    <p id="randomMultiSent"></p>
+    </div>
+    <br /><br /><br />
+    
+<button onclick="multiRandomGenerator ()">
+    Click here to get a new sentance!
+    </button>
+    <br \><br /><br />
+<p1 id="sentanceLog">
+   
+</p1>
+        
+<script src="LanguageScript.js"></script>
+</body>
+</html>
