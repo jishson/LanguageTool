@@ -14,3 +14,5 @@ Stage 4: Develop sentence complexity, punctuation and grammar structure within r
 Stage 5: Create sentence format variations. 
 
 Stage 6: Generate and display approx 500 word grammatically correct string
+
+Context: Am a language teacher and code dabbler. Getting deeper into the rabit hole, current floor is Github tutorials. 
