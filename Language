@@ -32,15 +32,20 @@
     <p id="elementCounterDisplay"></p>
     <p id="displayLoop"></p>
 <br>
+<button onclick="multiRandomGenerator ()";>
+    Click here to get a new sentance!
+    </button>
+    <br \><br /><br />
+
 <div class="sentenceOfDay">
     <p id="randomMultiSent"></p>
     </div>
     <br /><br /><br />
     
-<button onclick="multiRandomGenerator ()">
-    Click here to get a new sentance!
+<button onclick="manyRandom ()";>
+    Click here to get another new sentance!
     </button>
-    <br \><br /><br />
+    <br />
 <p1 id="sentanceLog">
    
 </p1>
