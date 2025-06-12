@@ -1,55 +1,271 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
+<html lang="en">
 <head>
-
-<style>
-.sentenceOfDay {
-    height:400;
-    width:300;
-    position:relative;
-    text-align:center;
-    color:black;
-    border:5px dotted orange;
-    padding:2px;
-    font-family:cambria;
-    text-decoration:none;
-    font-size:67px;
-    font-weight:bold;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Tool v2.0</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
         }
-        			
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #4a5568;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        button {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(238, 90, 36, 0.3);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(238, 90, 36, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .input-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        input[type="number"] {
+            padding: 8px 12px;
+            border: 2px solid #ddd;
+            border-radius: 20px;
+            font-size: 16px;
+            width: 80px;
+            text-align: center;
+        }
+
+        .sentence-display {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+            text-align: center;
+            font-size: 1.4em;
+            line-height: 1.6;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .paragraph-display {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            font-size: 1.1em;
+            line-height: 1.8;
+            text-align: justify;
+            min-height: 200px;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .sentence-log {
+            background: #f1f3f4;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            max-height: 300px;
+            overflow-y: auto;
+            font-size: 1em;
+            line-height: 1.5;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(45deg, #36d1dc, #5b86e5);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(54, 209, 220, 0.3);
+        }
+
+        .stat-card h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.2em;
+        }
+
+        .stat-card .number {
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .complexity-controls {
+            background: #e8f4f8;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .complexity-controls h3 {
+            margin-top: 0;
+            color: #2d3748;
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            transform: scale(1.2);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: #e9ecef;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            transition: width 0.3s ease;
+            border-radius: 10px;
+        }
     </style>
-
-    <title>
-        Language Tool
-    </title>
-    
 </head>
-
 <body>
-
-    <button onclick="elementCounter()">
-        Use me to count elements :)
-    </button>
-    <p id="elementCounterDisplay"></p>
-    <p id="displayLoop"></p>
-<br>
-<button onclick="multiRandomGenerator ()";>
-    Click here to get a new sentance!
-    </button>
-    <br \><br /><br />
-
-<div class="sentenceOfDay">
-    <p id="randomMultiSent"></p>
-    </div>
-    <br /><br /><br />
-    
-<button onclick="manyRandom ()";>
-    Click here to get another new sentance!
-    </button>
-    <br />
-<p1 id="sentanceLog">
-   
-</p1>
+    <div class="container">
+        <h1>🎯 Language Tool v2.0</h1>
         
-<script src="LanguageScript.js"></script>
+        <div class="stats">
+            <div class="stat-card">
+                <h3>Vocabulary Size</h3>
+                <div class="number" id="vocabSize">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Sentences Generated</h3>
+                <div class="number" id="sentenceCount">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Words Generated</h3>
+                <div class="number" id="wordCount">0</div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button onclick="generateSingle()">🎲 Generate Single Sentence</button>
+            <div class="input-group">
+                <input type="number" id="sentenceNum" value="5" min="1" max="50">
+                <button onclick="generateMultiple()">📝 Generate Multiple</button>
+            </div>
+            <button onclick="generateParagraph()">📄 Generate 500-Word Paragraph</button>
+            <button onclick="clearAll()">🗑️ Clear All</button>
+        </div>
+
+        <div class="complexity-controls">
+            <h3>Sentence Complexity Options</h3>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="useComplex" checked>
+                    <label for="useComplex">Complex Sentences</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="usePunctuation" checked>
+                    <label for="usePunctuation">Varied Punctuation</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="useConjunctions" checked>
+                    <label for="useConjunctions">Conjunctions</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="useAdverbs" checked>
+                    <label for="useAdverbs">Adverbs</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="usePrepositions" checked>
+                    <label for="usePrepositions">Prepositional Phrases</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="useVariedStructure" checked>
+                    <label for="useVariedStructure">Varied Sentence Structure</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="sentence-display" id="currentSentence">
+            Click a button above to generate your first sentence!
+        </div>
+
+        <div class="paragraph-display" id="paragraphDisplay" style="display: none;">
+            <h3 style="margin-top: 0; color: #4a5568;">Generated Paragraph:</h3>
+            <div id="paragraphContent"></div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressBar" style="width: 0%;"></div>
+            </div>
+            <div style="text-align: center; margin-top: 10px;">
+                <span id="progressText">0 / 500 words</span>
+            </div>
+        </div>
+
+        <div class="sentence-log" id="sentenceLog" style="display: none;">
+            <h3 style="margin-top: 0; color: #4a5568;">Sentence Log:</h3>
+            <div id="logContent"></div>
+        </div>
+    </div>
+<script src="LanguageScript_v3.js"></script>
 </body>
 </html>
