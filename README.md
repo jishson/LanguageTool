@@ -16,3 +16,5 @@ Stage 5: Create sentence format variations.
 Stage 6: Generate and display approx 500 word grammatically correct string
 
 Context: Am a language teacher and code dabbler. Getting deeper into the rabit hole, current floor is Github tutorials. 
+
+2025-06-12 Update: v3 committed for both HTML and JS using Claude (free). Stages 1-6 accomplished. 
